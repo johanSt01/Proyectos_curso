@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
+public class Introduccion {
     public static void main(String[] args) throws Exception {
         //ejemploConversion();
         //ejemploScanner();
