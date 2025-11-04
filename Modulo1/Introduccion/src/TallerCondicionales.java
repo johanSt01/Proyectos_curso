@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Taller {
+public class TallerCondicionales {
     public static void main(String[] args) {
         ejercicio();
     }
