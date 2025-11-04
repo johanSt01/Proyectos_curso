@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class Ejercicios_adicionales_bucles {
     public static void main(String[] args) {
         //numero_mayor();
-        letraMayuscula();
+        //letraMayuscula();
+        ejercicio3();
     }
 
     /*
@@ -27,6 +28,10 @@ public class Ejercicios_adicionales_bucles {
         sc.close();
     }
 
+    /*
+     * Escriba un programa que le permita ingresar una letra e imprima en la
+     * consola si es mayúscula o no.
+     */
     public static void letraMayuscula(){
         Scanner sc = new Scanner(System.in);
         System.out.print("Ingrese una letra: ");
@@ -34,8 +39,26 @@ public class Ejercicios_adicionales_bucles {
         if(letra >= 'A' && letra <= 'Z'){
             System.out.println("La letra ingresada es mayúscula.");
         }else{
-            System.out.println("La letra ingresada no es mayúscula.");
+            System.out.println("La letra ingresada es minúscula.");
         }
         sc.close();
+    }
+
+    /*
+     * Escriba un programa que imprima en la consola un tablero de ajedrez.
+     */
+    public static void ejercicio3(){
+        for(int i=0; i<8; i++){
+            for(int j=0; j<8; j++){
+                System.out.print("|");
+                if((i%2==0 && j%2==0) || (i%2!=0 && j%2!=0)){
+                    System.out.print(" B ");
+                }else {
+                    System.out.print(" N ");
+                }
+            }
+            System.out.print("|" );
+            System.out.println();
+        }
     }
 }
