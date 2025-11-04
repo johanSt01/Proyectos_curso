@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public class Ejercicios_adicionales_bucles {
     public static void main(String[] args) {
-        numero_mayor();
+        //numero_mayor();
+        letraMayuscula();
     }
 
     /*
@@ -23,6 +24,18 @@ public class Ejercicios_adicionales_bucles {
             numero /= 10;
         }while(numero>0);
         System.out.println("El número mayor del número ingresado es: "+numero_mayor);
+        sc.close();
+    }
+
+    public static void letraMayuscula(){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese una letra: ");
+        char letra = sc.next().charAt(0);
+        if(letra >= 'A' && letra <= 'Z'){
+            System.out.println("La letra ingresada es mayúscula.");
+        }else{
+            System.out.println("La letra ingresada no es mayúscula.");
+        }
         sc.close();
     }
 }
