@@ -1,0 +1,7 @@
+# Ignorar archivos compilados y directorios de construcción
+*.class
+target/
+build/
+.idea/
+.vscode/
+.settings/

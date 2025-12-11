@@ -1,8 +1,8 @@
-package Ejercicios;
+package EjerciciosIntroduccion;
 
 import java.util.Scanner;
 
-public class Ejercicios_adicionales_bucles {
+public class EjerciciosAdicionalesBucles {
     public static void main(String[] args) {
         //numero_mayor();
         //letraMayuscula();

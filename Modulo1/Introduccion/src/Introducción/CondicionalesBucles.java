@@ -1,6 +1,7 @@
+package Introducción;
 import java.util.Scanner;
 
-public class condicionales_bucles {
+public class CondicionalesBucles {
     public static void main(String[] args) throws Exception {
         // EjemploIf();
         // EjemploIf_Else();
