@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+
+    <!-- Propiedades que se pueden usar en el archivo -->
+    <Properties>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+        <Property name="LOG_FILE_PATH">logs</Property>
+        <Property name="LOG_FILE_NAME">aplicacion</Property>
+    </Properties>
+
+    <Appenders>
+        <!-- Appender para consola -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+
+        <!-- Appender para archivo con rotación -->
+        <RollingFile name="FileAppender"
+                     fileName="${LOG_FILE_PATH}/${LOG_FILE_NAME}.log"
+                     filePattern="${LOG_FILE_PATH}/${LOG_FILE_NAME}-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <!-- Rotar diariamente -->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <!-- Rotar cuando el archivo supera 10MB -->
+                <SizeBasedTriggeringPolicy size="10MB"/>
+            </Policies>
+            <!-- Mantener máximo 10 archivos -->
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <!-- Appender solo para errores -->
+        <RollingFile name="ErrorFileAppender"
+                     fileName="${LOG_FILE_PATH}/error.log"
+                     filePattern="${LOG_FILE_PATH}/error-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="10MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <!-- Logger específico para nuestra aplicación -->
+        <Logger name="org.example" level="DEBUG" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileAppender"/>
+            <AppenderRef ref="ErrorFileAppender"/>
+        </Logger>
+
+        <!-- Logger para librerías externas (reducir ruido) -->
+        <Logger name="org.apache" level="WARN"/>
+        <Logger name="org.springframework" level="WARN"/>
+    </Loggers>
+
+    <!-- Logger raíz -->
+    <Root level="INFO">
+        <AppenderRef ref="Console"/>
+        <AppenderRef ref="FileAppender"/>
+        <AppenderRef ref="ErrorFileAppender"/>
+    </Root>
+</Configuration>
