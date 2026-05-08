@@ -87,4 +87,21 @@ public class ProductoController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    @GetMapping("/{precio}")
+    public ResponseEntity<Producto> obtenerProductoPorId(@PathVariable Double precio) {
+        try {
+            return productoService.ListarPrecioMayorQue(precio)
+                    .map(ResponseEntity::ok)
+                    .orElse(ResponseEntity.notFound().build());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @GetMapping("/mas-vendidos")
+    public ResponseEntity<List<Object[]>> masVendidos() {
+        return ResponseEntity.ok(productoService.obtenerProductosMasVendidos());
+    }
+
 }

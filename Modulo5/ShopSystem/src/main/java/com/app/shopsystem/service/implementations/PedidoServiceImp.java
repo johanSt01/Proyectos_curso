@@ -57,4 +57,10 @@ public class PedidoServiceImp implements PedidoService {
         }
         return false;
     }
+
+    @Override
+    public List<Pedido> ObtenerPedidoFecha() {
+        LocalDateTime fechaLimite = LocalDateTime.now().minusDays(30);
+        return pedidoRepository.findPedidosDesde(fechaLimite);
+    }
 }

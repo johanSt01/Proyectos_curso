@@ -12,4 +12,5 @@ public interface PedidoService {
     Pedido crearPedido(Long clienteId);
     Optional<Pedido> actualizarEstado(Long id, String nuevoEstado);
     boolean eliminar(Long id);
+    List<Pedido> ObtenerPedidoFecha();
 }

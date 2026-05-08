@@ -12,4 +12,6 @@ public interface ProductoService {
     Producto guardar(Producto producto);
     Optional<Producto> actualizar(Long id, Producto datosNuevos);
     boolean eliminar(Long id);
+    Optional<Producto> ListarPrecioMayorQue(Double precioMayor);
+    List<Object[]> obtenerProductosMasVendidos();
 }

@@ -1,6 +1,7 @@
 package com.app.shopsystem.service.implementations;
 
 import com.app.shopsystem.model.Producto;
+import com.app.shopsystem.repository.DetallePedidoRepository;
 import com.app.shopsystem.repository.ProductoRepository;
 import com.app.shopsystem.service.interfaces.ProductoService;
 import lombok.AllArgsConstructor;
@@ -14,6 +15,7 @@ import java.util.Optional;
 public class ProductoServiceImp implements ProductoService {
 
     private final ProductoRepository productoRepository;
+    private DetallePedidoRepository detallePedidoRepository;
 
     @Override
     public List<Producto> listarTodos() {
@@ -52,5 +54,15 @@ public class ProductoServiceImp implements ProductoService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public Optional<Producto> ListarPrecioMayorQue(Double precioMayor) {
+        return productoRepository.findByPrecioLessThan(precioMayor);
+    }
+
+    @Override
+    public List<Object[]> obtenerProductosMasVendidos() {
+        return detallePedidoRepository.findProductosMasVendidos();
     }
 }

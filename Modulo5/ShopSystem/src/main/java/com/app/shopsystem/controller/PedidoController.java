@@ -86,4 +86,9 @@ public class PedidoController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    @GetMapping("/ultimo-mes")
+    public ResponseEntity<List<Pedido>> pedidosUltimoMes() {
+        return ResponseEntity.ok(pedidoService.ObtenerPedidoFecha());
+    }
 }

@@ -25,7 +25,6 @@ public class Pedido {
             regexp = "PENDIENTE|ENVIADO|ENTREGADO|CANCELADO",
             message = "El estado debe ser: PENDIENTE, ENVIADO, ENTREGADO o CANCELADO"
     )
-
     @Column(name = "estado", nullable = false, length = 20)
     private String estado;
 
@@ -35,7 +34,6 @@ public class Pedido {
     private Cliente cliente;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-
     private List<DetallePedido> detalles = new ArrayList<>();
 
     public Pedido() {
